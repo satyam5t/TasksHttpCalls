@@ -1,0 +1,217 @@
+<h1>Users</h1>
+
+<div class="row">
+    
+
+    <div class="col-8 mx-auto">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#newModal">Add User</button>
+    </div>
+    <div class="col-8 mx-auto">
+    <table class="table  table-hover mx-auto">
+        <thead class="thead-dark">
+    
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>UserName</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody class="tbody-success">
+            <tr *ngFor="let user of getForm; let i=index">
+                <td>{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.userName}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.salary}}</td>
+                <td> 
+                    <button class="btn btn-info" (click)="onEditClick($event,i)" data-toggle="modal" data-target="#editModal" >Edit</button>
+                </td>
+            <td>
+                <button class="btn btn-danger" (click)="onDeleteClick(($event),i)" data-toggle="modal" data-target="#deleteModal" >Delete</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+<!--Add user-->
+
+<form>
+<div class="modal " role="dialog" id="newModal" style="background-color: white;">
+  <div class="modal-dailog">
+      <div class="modal-contant" style="width: 700px; margin: auto;">
+          <div class="modal-header">
+              <div class="modal-tittle">Add User</div>
+              <button class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+              <!--div class="form-group row">
+                  <label for="txtNewId" class="col-sm-4 col-form-label">ID</label>
+                  <div class="col-sm-8">
+                      <input type="number" id="txtNewProjectID" style="width: 100px;" class="form-control" placeholder=" ID" name="ID" [(ngModel)]="addUser.id">
+                  </div>
+              </div-->
+
+              <div class="form-group row">
+                <label for="txtNewUserName" class="col-sm-4 col-form-label">User Name</label>
+                <div class="col-sm-8">
+<input type="text" id="txtNewUserName" style="width: 200px;" class="form-control" placeholder="UserName" name="Last Name" [(ngModel)]="addUser.userName">
+                </div>
+            </div>
+  
+
+            <div class="form-group row">
+                <label for="txtNewpwd" class="col-sm-4 col-form-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" id="txtNewpwd" style="width: 200px;" class="form-control" placeholder="password" name="Password" [(ngModel)]="addUser.password">
+                </div>
+            </div>
+
+              <div class="form-group row">
+                  <label for="txtNewFirstName" class="col-sm-4 col-form-label">First Name</label>
+                  <div class="col-sm-8">
+                      <input type="text" id="txtNewFirstName" style="width: 200px;" class="form-control" placeholder="First Name" name="First Name" [(ngModel)]="addUser.firstName">
+                  </div>
+              </div>
+              <div class="form-group row">
+                <label for="txtNewLastName" class="col-sm-4 col-form-label">Last Name</label>
+                <div class="col-sm-8">
+                    <input type="text" id="txtNewLastName" style="width: 200px;" class="form-control" placeholder="Last Name" name="Last Name" [(ngModel)]="addUser.lastName">
+                </div>
+            </div>
+
+
+
+
+            
+              <div class="form-group row">
+                  <label for="txtNewAge" class="col-sm-4 col-form-label">Age</label>
+                  <div class="col-sm-8">
+                      <input type="number" id="txtNewAge" style="width: 200px;" class="form-control" placeholder="Age" name="Age" [(ngModel)]="addUser.age">
+                  </div>
+              </div>
+    
+
+              <div class="form-group row">
+                  <label for="txtNewSalary" class="col-sm-4 col-form-label">Salary</label>
+                  <div class="col-sm-8">
+                      <input type="number" id="txtNewSalary" style="width: 100px;" class="form-control" placeholder="Salary" name="Team Size" [(ngModel)]="addUser.salary">
+                  </div>
+              </div>
+             
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" data-dismiss="modal" (click)="onSaveClick($event)">Save</button>
+              <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+
+
+          </div>
+      </div>
+  </div>
+</div>
+</form>
+<!--edit model-->
+<form>
+    <div class="modal" role="dialog" id="editModal" style="background-color: white;">
+      <div class="modal-dailog">
+          <div class="modal-contant" style="width: 700px; margin: auto;">
+              <div class="modal-header">
+                  <div class="modal-tittle">edit User</div>
+                  <button class="close" data-dismiss="modal"><span>&times;</span></button>
+              </div>
+              <div class="modal-body">
+                  <div class="form-group row">
+                      <label for="txtEditId" class="col-sm-4 col-form-label">ID</label>
+                      <div class="col-sm-8">
+                          <input type="number" id="txtEditProjectID" style="width: 100px;" class="form-control" placeholder=" ID" name="ID" [(ngModel)]="editUser.id">
+                      </div>
+                  </div>
+    
+                  <div class="form-group row">
+                      <label for="txtEditFirstName" class="col-sm-4 col-form-label">First Name</label>
+                      <div class="col-sm-8">
+                          <input type="text" id="txtEditFirstName" style="width: 200px;" class="form-control" placeholder="First Name" name="First Name" [(ngModel)]="editUser.firstName">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="txtEditLastName" class="col-sm-4 col-form-label">Last Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="txtEditLastName" style="width: 200px;" class="form-control" placeholder="Last Name" name="Last Name" [(ngModel)]="editUser.lastName">
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                  <label for="txtEditUserName" class="col-sm-4 col-form-label">User Name</label>
+                  <div class="col-sm-8">
+                      <input type="text" id="txtEditUserName" style="width: 200px;" class="form-control" placeholder="UserName" name="Last Name" [(ngModel)]="editUser.userName">
+                  </div>
+              </div>
+    
+                  <div class="form-group row">
+                      <label for="txtEditAge" class="col-sm-4 col-form-label">Age</label>
+                      <div class="col-sm-8">
+                          <input type="number" id="txtEditAge" style="width: 200px;" class="form-control" placeholder="Age" name="Age" [(ngModel)]="editUser.age">
+                      </div>
+                  </div>
+        
+    
+                  <div class="form-group row">
+                      <label for="txtEditSalary" class="col-sm-4 col-form-label">Salary</label>
+                      <div class="col-sm-8">
+                          <input type="text" id="txtEditSalary" style="width: 100px;" class="form-control" placeholder="Salary" name="Team Size" [(ngModel)]="editUser.salary">
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                  <button class="btn btn-success" data-dismiss="modal" (click)="onUpdateClick()">Save</button>
+    
+              </div>
+          </div>
+      </div>
+    </div>
+    </form>
+    
+    
+
+    <!--delete Project-->
+<form>
+    
+    <div class="modal" role="dialog" id="deleteModal" style="background-color: white;">
+        <div class="modal-dailog">
+            <div class="modal-contant" style="margin: auto; width: 700px;">
+                <div class="modal-header">
+                    <div class="modal-title">delete User Data</div>
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="txtdeleteID" class="col-sm-4 col-form-label">ID</label>
+                        <div class="col-sm-10">
+                            <input type="number" id="txtdeleteID" style="width: 100px;" class="form-control form-control-plain-text" placeholder="ID" name="User id" [(ngModel)]="deleteUser.id" disabled="disabled">
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label for="txtdeleteUserName" class="col-sm-4 col-form-label">UserName</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtdeleteUserName" style="width: 200px;" class="form-control" placeholder="UserName" name="UserName" [(ngModel)]="deleteUser.userName">
+                        </div>
+                    </div>
+   
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success" data-dismiss="modal" (click)="onDeleteConfirm()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <hr>
+    

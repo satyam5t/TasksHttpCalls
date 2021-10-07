@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 3,
+      "firstName": "atuliya",
+      "lastName": "patra",
+      "password": null,
+      "salary": "6767",
+      "userName": "atuliya",
+      "age": 27
+    },
+    {
+      "id": 4,
+      "firstName": "Satyam ",
+      "lastName": "Purwar",
+      "password": null,
+      "salary": "678",
+      "userName": "satyam",
+      "age": 31
+    },
+    {
+      "id": 6,
+      "firstName": "Randheer",
+      "lastName": "dshe",
+      "password": "123445",
+      "salary": 567999,
+      "userName": "randheer_pi",
+      "age": 26
+    }
+  ],
+  "comment": []
+}
